@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -38,21 +40,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App() {
-    Column {
-        var count by remember { mutableIntStateOf(1) }
-
-        Button(onClick = {
-            count += 1
-        }) {
-            Text(stringResource(R.string.increment))
+    LabiiTheme {
+        Scaffold { contentPadding ->
+            var state by remember { mutableStateOf(false) }
+            Column(Modifier.padding(contentPadding)) {
+                Button(onClick = { state = !state }) {
+                    Text("Переключить")
+                }
+                Text("Состояние: $state")
+            }
         }
-        Button(onClick = {
-            count -= 1
-        }) {
-            Text(stringResource(R.string.decrement))
-        }
-
-        Text(pluralStringResource(R.plurals.things, count, count))
     }
 }
 

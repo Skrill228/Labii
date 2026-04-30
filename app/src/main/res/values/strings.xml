@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Labii</string>
     <plurals name="things">
         <item quantity="one">%1$d штука</item>
         <item quantity="few">%1$d штуки</item>
